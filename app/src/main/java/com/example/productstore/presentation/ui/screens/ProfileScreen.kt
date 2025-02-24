@@ -47,7 +47,7 @@ fun ProfileScreen(navController: NavHostController) {
         ) {
             // Profile Image
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                painter = painterResource(id = R.drawable.ic_app_launcher_foreground),
                 contentDescription = "Profile Picture",
                 modifier = Modifier
                     .size(100.dp)
@@ -67,7 +67,7 @@ fun ProfileScreen(navController: NavHostController) {
             Button(
                 onClick = { /* Handle Edit Profile */ },
                 modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE))
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF006BEE))
             ) {
                 Text("Edit Profile", color = Color.White, fontSize = 16.sp)
             }

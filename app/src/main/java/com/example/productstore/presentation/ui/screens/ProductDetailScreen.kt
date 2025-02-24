@@ -62,7 +62,7 @@ fun ProductDetailScreen(
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(text = item.title, fontSize = 22.sp, fontWeight = FontWeight.Bold)
                 Spacer(modifier = Modifier.height(8.dp))
-                Text(text = "$${item.price}", fontSize = 20.sp, color = Color.Green)
+                Text(text = "$${item.price}", fontSize = 20.sp, color = Color(0xFF4A84CB))
                 Spacer(modifier = Modifier.height(8.dp))
 //                Text(text = item.description, fontSize = 16.sp, color = Color.Gray) // ✅ Show description
 //                Spacer(modifier = Modifier.height(16.dp))
@@ -72,7 +72,7 @@ fun ProductDetailScreen(
                         Toast.makeText(context, "Added to Cart", Toast.LENGTH_SHORT).show() // ✅ Corrected Toast
                     },
                     modifier = Modifier.fillMaxWidth(),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE))
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF006BEE))
                 ) {
                     Text("Add to Cart", color = Color.White)
                 }

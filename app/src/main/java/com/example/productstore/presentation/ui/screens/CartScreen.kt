@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,7 +50,7 @@ fun CartScreen(navController: NavHostController) {
                 CartItem(
                     productName = "Product $index",
                     productPrice = (index + 1) * 50,
-                    productImage = R.drawable.ic_launcher_foreground
+                    productImage = R.drawable.ic_app_launcher_foreground
                 )
                 Spacer(modifier = Modifier.height(10.dp))
             }
@@ -77,7 +78,7 @@ fun CartItem(productName: String, productPrice: Int, productImage: Int) {
         Column(modifier = Modifier.weight(1f)) {
             Text(text = productName, fontSize = 18.sp, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(4.dp))
-            Text(text = "$$productPrice", fontSize = 16.sp, color = Color.Green)
+            Text(text = "$$productPrice", fontSize = 12.sp, color = Color(0xFF21AB23))
         }
         IconButton(onClick = { /* Remove Item */ }) {
             Icon(Icons.Default.Delete, contentDescription = "Remove", tint = Color.Red)
@@ -98,13 +99,13 @@ fun CheckoutBar() {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(text = "Total:", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                Text(text = "$150", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.Green)
+                Text(text = "$150", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = colorResource(R.color.teal_700))
             }
             Spacer(modifier = Modifier.height(8.dp))
             Button(
                 onClick = { /* Proceed to Checkout */ },
                 modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE))
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF006BEE))
             ) {
                 Text("Checkout", color = Color.White, fontSize = 16.sp)
             }
@@ -122,7 +123,7 @@ fun PreviewCartItem() {
     CartItem(
         productName = "Sample Product",
         productPrice = 99,
-        productImage = R.drawable.ic_launcher_foreground
+        productImage = R.drawable.ic_app_launcher_foreground
     )
 }
 @Preview(showBackground = true)
