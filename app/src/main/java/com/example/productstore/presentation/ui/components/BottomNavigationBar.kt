@@ -15,7 +15,7 @@ fun BottomNavigationBar(navController: NavController, currentRoute: String) {
     val items = listOf(
         BottomNavItem("Home", Icons.Default.Home, Screen.ProductList.route),
         BottomNavItem("Cart", Icons.Default.ShoppingCart, Screen.Cart.route),
-        BottomNavItem("Profile", Icons.Default.Person, "profile")
+        BottomNavItem("Profile", Icons.Default.Person, Screen.Profile.route)
     )
 
     NavigationBar(containerColor = Color(0xFFCDC2DC)) {

@@ -21,22 +21,21 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.productstore.R
+import com.example.productstore.presentation.navigation.Screen
+import com.example.productstore.presentation.ui.components.BottomNavigationBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(navController: NavHostController) {
+    val currentRoute = Screen.Profile.route
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text("Profile", fontWeight = FontWeight.Bold, color = Color.Black) },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
-                    }
-                },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFFCDC2DC))
             )
-        }
+        },
+        bottomBar = { BottomNavigationBar(navController, currentRoute) }
     ) { paddingValues ->
         Column(
             modifier = Modifier

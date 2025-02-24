@@ -38,7 +38,7 @@ fun AppNav(
             )
         }
 
-        composable("profile") {
+        composable(Screen.Profile.route) {
             ProfileScreen(navController = navController)
         }
 

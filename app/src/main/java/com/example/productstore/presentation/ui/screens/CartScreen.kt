@@ -34,11 +34,6 @@ fun CartScreen(navController: NavHostController) {
         topBar = {
             TopAppBar(
                 title = { Text("My Cart", fontWeight = FontWeight.Bold, color = Color.Black) },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
-                    }
-                },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFFCDC2DC))
             )
         },
