@@ -22,10 +22,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.productstore.R
+import com.example.productstore.presentation.ui.components.BottomNavigationBar
+import com.example.productstore.presentation.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CartScreen(navController: NavHostController) {
+    val currentRoute = Screen.Cart.route
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -38,7 +42,7 @@ fun CartScreen(navController: NavHostController) {
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFFCDC2DC))
             )
         },
-        bottomBar = { CheckoutBar() }
+        bottomBar = { BottomNavigationBar(navController, currentRoute) }
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -54,6 +58,8 @@ fun CartScreen(navController: NavHostController) {
                 )
                 Spacer(modifier = Modifier.height(10.dp))
             }
+            Spacer(modifier = Modifier.weight(1f))
+            CheckoutBar()
         }
     }
 }
@@ -112,11 +118,13 @@ fun CheckoutBar() {
         }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewCartScreen() {
     CartScreen(navController = rememberNavController())
 }
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewCartItem() {
@@ -126,9 +134,9 @@ fun PreviewCartItem() {
         productImage = R.drawable.ic_app_launcher_foreground
     )
 }
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewCheckoutBar() {
     CheckoutBar()
 }
-
