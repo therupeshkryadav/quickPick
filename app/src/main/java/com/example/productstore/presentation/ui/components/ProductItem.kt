@@ -70,5 +70,5 @@ fun ProductItem(product: Product,onClick:()-> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun ProductItemPreview() {
-    ProductItem(Product(1, "Sample Product", 29.99, "https://via.placeholder.com/150"),{})
+    ProductItem(Product(1, "Sample Product", "","",29.99, "https://via.placeholder.com/150"),{})
 }

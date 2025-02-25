@@ -11,12 +11,14 @@ import com.example.productstore.presentation.ui.screens.ProductDetailScreen
 import com.example.productstore.presentation.ui.screens.ProductScreen
 import com.example.productstore.presentation.ui.screens.ProfileScreen
 import com.example.productstore.presentation.ui.screens.SplashScreen
+import com.example.productstore.presentation.viewmodel.CartViewModel
 import com.example.productstore.presentation.viewmodel.ProductViewModel
 
 @Composable
 fun AppNav(
     navController: NavHostController,
     productViewModel: ProductViewModel,
+    cartViewModel: CartViewModel,
     modifier: Modifier = Modifier
 ) {
     NavHost(
@@ -44,7 +46,7 @@ fun AppNav(
 
 
         composable(Screen.Cart.route) {
-            CartScreen(navController = navController)
+            CartScreen(navController = navController, cartViewModel = cartViewModel)
         }
 
 
@@ -58,6 +60,7 @@ fun AppNav(
                 ProductDetailScreen(
                     productId = productId,
                     productViewModel = productViewModel,
+                    cartViewModel = cartViewModel,
                     navController = navController
                 )
             }

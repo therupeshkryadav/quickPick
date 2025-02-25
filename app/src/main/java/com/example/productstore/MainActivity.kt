@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.example.productstore.presentation.navigation.AppNav
 import com.example.productstore.presentation.ui.theme.ProductStoreTheme
+import com.example.productstore.presentation.viewmodel.CartViewModel
 import com.example.productstore.presentation.viewmodel.ProductViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -23,10 +24,12 @@ class MainActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize()) {
                     val navController = rememberNavController()
                     val productViewModel: ProductViewModel = koinViewModel()
+                    val cartViewModel: CartViewModel = koinViewModel()
 
                     AppNav(
                         navController = navController,
-                        productViewModel = productViewModel
+                        productViewModel = productViewModel,
+                        cartViewModel = cartViewModel
                     )
                 }
             }

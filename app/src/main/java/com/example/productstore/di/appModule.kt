@@ -1,9 +1,19 @@
 package com.example.productstore.di
 
+import android.app.Application
+import androidx.room.Room
+import com.example.productstore.data.model.CartDao
+import com.example.productstore.data.model.CartDatabase
 import com.example.productstore.data.network.ProductApi
+import com.example.productstore.data.repository.CartRepositoryImpl
 import com.example.productstore.data.repository.ProductRepositoryImpl
+import com.example.productstore.domain.repository.CartRepository
 import com.example.productstore.domain.repository.ProductRepository
+import com.example.productstore.domain.usecase.AddToCartUseCase
+import com.example.productstore.domain.usecase.GetCartItemsUseCase
 import com.example.productstore.domain.usecase.GetProductsUseCase
+import com.example.productstore.domain.usecase.RemoveFromCartUseCase
+import com.example.productstore.presentation.viewmodel.CartViewModel
 import com.example.productstore.presentation.viewmodel.ProductViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -41,4 +51,27 @@ val appModule = module {
 
     // Provide ViewModel
     viewModel { ProductViewModel(get()) }
+
+    // Provide Room Database
+    single {
+        Room.databaseBuilder(
+            get<Application>(),
+            CartDatabase::class.java,
+            "cart_db"
+        ).build()
+    }
+
+    // Provide CartDao
+    single<CartDao> { get<CartDatabase>().cartDao() }
+
+    // Provide CartRepository
+    single<CartRepository> { CartRepositoryImpl(get()) }
+
+    // Provide Use Cases
+    factory { AddToCartUseCase(get()) }
+    factory { GetCartItemsUseCase(get()) }
+    factory { RemoveFromCartUseCase(get()) }
+
+    // Provide ViewModel
+    viewModel { CartViewModel(get(), get(), get()) }
 }
