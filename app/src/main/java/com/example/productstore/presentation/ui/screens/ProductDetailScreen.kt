@@ -1,6 +1,8 @@
 package com.example.productstore.presentation.ui.screens
 
+import android.net.Uri
 import android.widget.Toast
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -13,11 +15,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
+import com.example.productstore.R
+import com.example.productstore.domain.model.Product
+import com.example.productstore.domain.repository.ProductRepository
+import com.example.productstore.domain.usecase.GetProductsUseCase
 import com.example.productstore.presentation.viewmodel.ProductViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -39,7 +48,7 @@ fun ProductDetailScreen(
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFFCDC2DC))
+                colors = TopAppBarDefaults.topAppBarColors(Color(0xFFC2D0DC))
             )
         }
     ) { paddingValues ->
@@ -59,6 +68,7 @@ fun ProductDetailScreen(
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(12.dp))
                 )
+
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(text = item.title, fontSize = 22.sp, fontWeight = FontWeight.Bold)
                 Spacer(modifier = Modifier.height(8.dp))
@@ -85,4 +95,64 @@ fun ProductDetailScreen(
         }
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewProductScreen() {
+    val fakeRepository = FakeProductRepository()
+    val fakeUseCase = GetProductsUseCase(fakeRepository)
+    val fakeViewModel = ProductViewModel(fakeUseCase)
+
+    val navController = rememberNavController()
+
+    ProductScreen(
+        navController = navController,
+        viewModel = fakeViewModel,
+        onProductClick = {}
+    )
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewProductDetailScreen() {
+    val fakeRepository = FakeProductRepository()
+    val fakeUseCase = GetProductsUseCase(fakeRepository)
+    val fakeViewModel = ProductViewModel(fakeUseCase)
+
+    val navController = rememberNavController()
+
+    ProductDetailScreen(
+        productId = 1,
+        productViewModel = fakeViewModel,
+        navController = navController
+    )
+}
+
+
+class FakeProductRepository : ProductRepository {
+    override suspend fun getProducts(limit: Int, page: Int): List<Product> {
+        return listOf(
+            Product(
+                id = 1,
+                title = "Wireless Headphones",
+                price = 59.99,
+                imageUrl = "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
+            ),
+            Product(
+                id = 2,
+                title = "Smartwatch Series 5",
+                price = 199.99,
+                imageUrl = "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
+            ),
+            Product(
+                id = 3,
+                title = "Gaming Laptop",
+                price = 999.99,
+                imageUrl = "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
+            )
+        )
+    }
+}
+
 

@@ -2,6 +2,7 @@ package com.example.productstore.presentation.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,7 +34,7 @@ fun ProfileScreen(navController: NavHostController) {
         topBar = {
             TopAppBar(
                 title = { Text("Profile", fontWeight = FontWeight.Bold, color = Color.Black) },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFFCDC2DC))
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFFC2D0DC))
             )
         },
         bottomBar = { BottomNavigationBar(navController, currentRoute) }
@@ -46,12 +48,14 @@ fun ProfileScreen(navController: NavHostController) {
         ) {
             // Profile Image
             Image(
-                painter = painterResource(id = R.drawable.ic_app_launcher_foreground),
+                painter = painterResource(id = R.drawable.avatar_pp),
                 contentDescription = "Profile Picture",
+                contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .size(100.dp)
                     .clip(CircleShape)
-                    .background(Color.Gray)
+                    .border(width = 1.dp,Color.Black, CircleShape)
+                    .background(Color.White)
             )
 
             Spacer(modifier = Modifier.height(16.dp))

@@ -18,7 +18,7 @@ fun BottomNavigationBar(navController: NavController, currentRoute: String) {
         BottomNavItem("Profile", Icons.Default.Person, Screen.Profile.route)
     )
 
-    NavigationBar(containerColor = Color(0xFFCDC2DC)) {
+    NavigationBar(containerColor = Color(0xFFC2D0DC)) {
         items.forEach { item ->
             NavigationBarItem(
                 icon = { Icon(item.icon, contentDescription = item.label) },

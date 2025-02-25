@@ -34,7 +34,7 @@ fun CartScreen(navController: NavHostController) {
         topBar = {
             TopAppBar(
                 title = { Text("My Cart", fontWeight = FontWeight.Bold, color = Color.Black) },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFFCDC2DC))
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFFC2D0DC))
             )
         },
         bottomBar = { BottomNavigationBar(navController, currentRoute) }

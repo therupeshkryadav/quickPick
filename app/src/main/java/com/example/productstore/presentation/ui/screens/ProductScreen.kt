@@ -1,5 +1,6 @@
 package com.example.productstore.presentation.ui.screens
 
+import android.util.Log
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.tween
@@ -55,13 +56,7 @@ fun ProductScreen(navController:NavHostController,viewModel: ProductViewModel, o
                         fontWeight = FontWeight.Bold
                     )
                 },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFFCDC2DC),
-                    scrolledContainerColor = Color(0xFF6200EE),
-                    navigationIconContentColor = Color.Black,
-                    titleContentColor = Color.Black,
-                    actionIconContentColor = Color.Black
-                )
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFFC2D0DC))
             )
         },
         bottomBar = {
@@ -79,7 +74,8 @@ fun ProductScreen(navController:NavHostController,viewModel: ProductViewModel, o
                 else -> {
                     LazyColumn {
                         items(products) { product ->
-                            ProductItem(product, { onProductClick(product.id) })
+                            Log.d("productXD",product.imageUrl)
+                            ProductItem(product) { onProductClick(product.id) }
                         }
                     }
                 }
