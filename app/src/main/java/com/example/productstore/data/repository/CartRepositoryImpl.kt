@@ -15,7 +15,7 @@ class CartRepositoryImpl(private val cartDao: CartDao) : CartRepository {
         if (existingItem != null) {
             cartDao.updateCartItem(existingItem.copy(quantity = existingItem.quantity + 1))
         } else {
-            cartDao.insertCartItem(CartItemEntity(product.id, product.title, product.price, product.imageUrl, 1))
+            cartDao.insertCartItem(CartItemEntity(product.id, product.title, product.price*90, product.imageUrl, 1))
         }
     }
 

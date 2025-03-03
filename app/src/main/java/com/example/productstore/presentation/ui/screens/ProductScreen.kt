@@ -5,6 +5,7 @@ import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -93,10 +94,14 @@ fun ShimmerEffect() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)
+                    .border(
+                        width = 1.dp,Color.LightGray, RoundedCornerShape(12.dp)
+                    )
             ) {
                 Box(
                     modifier = Modifier
                         .size(80.dp)
+                        .padding(8.dp)
                         .clip(RoundedCornerShape(8.dp))
                         .background(Color.LightGray)
                         .placeholder(visible = true,
@@ -108,7 +113,7 @@ fun ShimmerEffect() {
                         ))
                 )
                 Spacer(modifier = Modifier.width(16.dp))
-                Column {
+                Column(modifier = Modifier.padding(vertical = 8.dp)) {
                     Box(
                         modifier = Modifier
                             .width(200.dp)
@@ -121,6 +126,15 @@ fun ShimmerEffect() {
                     Box(
                         modifier = Modifier
                             .width(100.dp)
+                            .height(16.dp)
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(Color.LightGray)
+                            .placeholder(visible = true, highlight = PlaceholderHighlight.shimmer())
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Box(
+                        modifier = Modifier
+                            .width(80.dp)
                             .height(16.dp)
                             .clip(RoundedCornerShape(4.dp))
                             .background(Color.LightGray)

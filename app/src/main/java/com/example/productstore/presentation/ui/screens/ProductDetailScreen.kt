@@ -8,7 +8,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
@@ -71,7 +73,8 @@ fun ProductDetailScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(paddingValues)
-                    .padding(16.dp),
+                    .padding(16.dp)
+                    .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 AsyncImage(
@@ -86,7 +89,7 @@ fun ProductDetailScreen(
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(text = item.title, fontSize = 22.sp, fontWeight = FontWeight.Bold)
                 Spacer(modifier = Modifier.height(8.dp))
-                Text(text = "$${item.price}", fontSize = 20.sp, color = Color(0xFF4A84CB))
+                Text(text = "${item.price*90} Rs.", fontSize = 20.sp, color = Color(0xFF4A84CB))
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(text = item.description, fontSize = 16.sp, color = Color.Gray) // ✅ Show description
                 Spacer(modifier = Modifier.height(16.dp))
